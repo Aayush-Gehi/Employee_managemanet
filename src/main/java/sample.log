@@ -1,0 +1,2 @@
+0    [http-nio-8080-exec-6] WARN  org.hibernate.orm.connections.pooling  - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+4469 [http-nio-8080-exec-6] WARN  com.employee.login.dao.LoginUserDAO  - User entered does not exists
