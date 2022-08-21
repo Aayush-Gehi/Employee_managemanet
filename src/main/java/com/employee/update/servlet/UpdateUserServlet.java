@@ -33,10 +33,17 @@ import jakarta.servlet.http.HttpServletResponse;
 */
 public class UpdateUserServlet extends HttpServlet{
 
+
+	
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 7181401374706455291L;
+	/**
+	 *
+	 */
+
+
 	/**
 	 *Takes the input from front-end and checks for it in the database and update the details by using 
 	 *dao layer method 
@@ -66,7 +73,7 @@ public class UpdateUserServlet extends HttpServlet{
 			}
 			else 
 			{
-				logger.warn("User cannot register due to error");
+				logger.warn("User cannot update due to error");
 				obj.put("Status", "500");
 				pw.print(obj.toString());
 			}

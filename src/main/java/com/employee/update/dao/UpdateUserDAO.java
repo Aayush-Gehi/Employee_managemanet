@@ -15,6 +15,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 /**
  *@author Aayush Gehi
  *This class interacts with the database to update the user details provided by the user and check whether the user 
@@ -35,7 +36,12 @@ public class UpdateUserDAO implements IUpdateUserDAO {
 		SessionFactory factory = configuration.buildSessionFactory(builder.build());
 		Session session = factory.openSession();
 		Transaction transaction = session.beginTransaction();
-		RegisterUser oldUser = session.load(RegisterUser.class,userId);
+		Query<RegisterUser> query = session.createQuery("FROM RegisterUser WHERE username=:username");
+		query.setParameter("username", newUsername);
+		RegisterUser user = query.uniqueResult();
+		int id = user.getId();
+		System.out.println(id);
+		RegisterUser oldUser = session.load(RegisterUser.class,id);
 		String[] newProjects = newProject.split(","); 
 		List<String> proj = Arrays.asList(newProjects);
 		boolean isUpdated=false;
